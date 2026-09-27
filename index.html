@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dharshini - Information Technology Student Portfolio. Projects, Hackathons, Skills, Internship, and Publications.">
+  <meta name="author" content="Dharshini">
+  <meta name="theme-color" content="#08080c">
+  <title>Dharshini | Information Technology Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Ambient Glow Overlay -->
+  <div class="ambient-glow-canvas" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-grid"></div>
+  </div>
+
+  <!-- Mobile Navigation Toggle Button -->
+  <button id="mobileNavToggle" class="mobile-nav-toggle d-xl-none" aria-label="Toggle navigation menu" aria-expanded="false">
+    <svg class="icon-menu" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <svg class="icon-close" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <!-- Mobile Backdrop Overlay -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <!-- ==========================================================================
+       LEFT FIXED SIDEBAR (Classic Layout Inspiration with Charcoal & Copper Theme)
+       ========================================================================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-wrapper">
+      
+      <!-- Profile Header -->
+      <div class="profile-card">
+        <div class="profile-img-wrap">
+          <img src="profile.jpg" alt="Dharshini - IT Student" class="profile-img">
+          <span class="online-indicator" title="Available for opportunities"></span>
+        </div>
+        <h1 class="profile-name"><a href="#hero">Dharshini</a></h1>
+        <p class="profile-tagline">Information Technology Student</p>
+
+        <!-- Social Links Row -->
+        <div class="social-links">
+          <a href="https://github.com/Dharshini1909" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub Profile" title="GitHub">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+            </svg>
+          </a>
+          <a href="mailto:aruldassdharsh@gmail.com" class="social-btn" aria-label="Send Email" title="Email">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a href="tel:+919344429427" class="social-btn" aria-label="Call Phone" title="Phone">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </a>
+          <a href="#contact" class="social-btn" aria-label="Location" title="Kurinjipadi, Cuddalore">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Theme Toggle in Sidebar -->
+        <div class="sidebar-theme-wrap">
+          <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Light and Dark Mode" title="Toggle Theme">
+            <span class="theme-toggle-icon icon-sun">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </span>
+            <span class="theme-toggle-icon icon-moon">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </span>
+            <span class="theme-mode-text" id="themeModeText">Dark Mode</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Menu (All 11 Exact Sections) -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li>
+            <a href="#hero" class="nav-link active">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="#other-participations" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Tech Talk</span>
+            </a>
+          </li>
+          <li>
+            <a href="#about" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>About</span>
+            </a>
+          </li>
+          <li>
+            <a href="#education" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+              <span>Education</span>
+            </a>
+          </li>
+          <li>
+            <a href="#skills" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <span>Skills</span>
+            </a>
+          </li>
+          <li>
+            <a href="#projects" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+              <span>Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="#hackathons" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+              <span>Hackathons</span>
+            </a>
+          </li>
+          <li>
+            <a href="#internship" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
+              <span>Internship</span>
+            </a>
+          </li>
+          <li>
+            <a href="#achievements" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+              <span>Achievements</span>
+            </a>
+          </li>
+          <li>
+            <a href="#publications" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <span>Publications</span>
+            </a>
+          </li>
+          <li>
+            <a href="#courses" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Courses</span>
+            </a>
+          </li>
+          <li>
+            <a href="#other-participations" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect>
+                <line x1="7" y1="8" x2="17" y2="8"></line>
+                <line x1="7" y1="12" x2="17" y2="12"></line>
+                <line x1="7" y1="16" x2="13" y2="16"></line>
+              </svg>
+              <span>Other Participations</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <p>&copy; 2026 Dharshini</p>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER (Offset to the right of fixed sidebar on desktop)
+       ========================================================================== -->
+  <main class="main-content" id="main">
+
+    <!-- ==================== HERO SECTION (Section 1) ==================== -->
+    <section id="hero" class="hero-section">
+      <div class="hero-bg-overlay"></div>
+
+        
+        <h1 class="hero-name">Dharshini</h1>
+        
+        <div class="hero-typing-wrap">
+          <span class="hero-typing-prefix">I'm </span>
+          <span class="typed-text" id="typedText"></span>
+          <span class="typed-cursor" aria-hidden="true">|</span>
+        </div>
+
+        <p class="hero-motto">&ldquo;Building my future, one line of code at a time.&rdquo;</p>
+        
+        <p class="hero-brief-summary">
+          I am an Information Technology student passionate about learning, building, and exploring technology.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#projects" class="btn-copper-fill">
+            <span>Explore Projects</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="#contact" class="btn-copper-outline">
+            <span>Get In Touch</span>
+          </a>
+          <a href="certificates/resumeforPort.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-outline">
+            <span>View Resume</span>
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: ABOUT ME ==================== -->
+    <section id="about" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+        <div class="section-title-bar"></div>
+        <p class="section-subtitle">Career Objective &amp; Personal Overview</p>
+      </div>
+
+      <div class="about-grid">
+        <!-- Profile Highlight Card -->
+        <div class="about-card-spotlight">
+          <div class="about-photo-wrap">
+            <img src="profile.jpg" alt="Dharshini" class="about-photo">
+          </div>
+          <div class="about-spotlight-info">
+            <h3 class="about-role-title">Information Technology Student</h3>
+            <p class="about-tagline-text">An enthusiastic Information Technology student dedicated to learning, growing, and contributing through technology.</p>
+
+            <div class="about-facts-grid">
+              <div class="fact-item">
+                <span class="fact-label">Degree:</span>
+                <span class="fact-value">B.Tech Information Technology</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-label">Institution:</span>
+                <span class="fact-value">Kongunadu College of Engg. &amp; Tech.</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-label">Batch:</span>
+                <span class="fact-value">2023 – 2027</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-label">Email:</span>
+                <span class="fact-value"><a href="mailto:aruldassdharsh@gmail.com">aruldassdharsh@gmail.com</a></span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-label">Phone:</span>
+                <span class="fact-value"><a href="tel:+919344429427">+91 9344429427</a></span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-label">Location:</span>
+                <span class="fact-value">Kurinjipadi, Cuddalore, TN</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Career Objective Block -->
+        <div class="copper-box-panel">
+          <div class="panel-icon-head">
+            <div class="icon-cube">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+            </div>
+            <h3 class="panel-head-title">Career Objective</h3>
+          </div>
+
+          <blockquote class="career-quote">
+            &ldquo;A highly motivated and enthusiastic Information Technology student looking for a position where I can use my technical and problem-solving skills, gain knowledge of new technologies, contribute to organizational growth, and continuously develop my skills as an IT professional.&rdquo;
+          </blockquote>
+
+
+        </div>
+
+        <!-- 3 Supporting Highlights -->
+        <div class="about-pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h4 class="pillar-title">Technical Problem Solving</h4>
+            <p class="pillar-text">Crafting practical solutions across embedded systems, IoT sensors, and smart web applications.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h4 class="pillar-title">Continuous Learning</h4>
+            <p class="pillar-text">Actively participating in national hackathons, publishing research, and mastering emerging stacks.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <h4 class="pillar-title">Placement Ready</h4>
+            <p class="pillar-text">Prepared with strong core fundamentals to contribute effectively to software engineering teams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: EDUCATION ==================== -->
+    <section id="education" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Education</h2>
+        <div class="section-title-bar"></div>
+        <p class="section-subtitle">Academic Qualifications &amp; Scholastic Journey</p>
+      </div>
+
+      <div class="timeline-container">
+        
+        <!-- Item 1: College -->
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <span class="marker-dot"></span>
+          </div>
+          <div class="timeline-content copper-glass-box">
+            <div class="timeline-top-row">
+              <h3 class="degree-title">B.Tech Information Technology</h3>
+              <span class="timeline-year-badge">2023 – 2027</span>
+            </div>
+            <h4 class="institution-name">Kongunadu College of Engineering and Technology, Trichy</h4>
+            
+            <!-- Academic score ONLY displayed in Education -->
+            <div class="score-badge-strip">
+              <span class="score-pill-tag">Academic Score:</span>
+              <span class="score-highlight-text">CGPA: 8.44</span>
+            </div>
+
+            <p class="timeline-desc">
+              Rigorous coursework focusing on software engineering principles, algorithms, relational database systems, hardware interfacing, and IoT architecture labs.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 2: School -->
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <span class="marker-dot"></span>
+          </div>
+          <div class="timeline-content copper-glass-box">
+            <div class="timeline-top-row">
+              <h3 class="degree-title">HSC</h3>
+              <span class="timeline-year-badge">2022 – 2023</span>
+            </div>
+            <h4 class="institution-name">St. Joseph of Cluny Matriculation Higher Secondary School, Neyveli</h4>
+            
+            <!-- Academic score ONLY displayed in Education -->
+            <div class="score-badge-strip">
+              <span class="score-pill-tag">Academic Score:</span>
+              <span class="score-highlight-text">85%</span>
+            </div>
+
+            <p class="timeline-desc">
+              Higher secondary education with a major emphasis on Mathematics, Physics, and Chemistry, cultivating strong analytical and logical reasoning abilities.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: SKILLS ==================== -->
+    <section id="skills" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Skills</h2>
+        <div class="section-title-bar"></div>
+        <p class="section-subtitle">Technical Proficiencies &amp; Tooling</p>
+      </div>
+
+      <div class="skills-grid">
+        
+        <!-- Programming -->
+        <div class="skill-category-card">
+          <div class="cat-head">
+            <div class="cat-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h3 class="cat-title">Programming</h3>
+              <span class="cat-count">2 Core Languages</span>
+            </div>
+          </div>
+          <div class="skill-tag-group">
+            <span class="skill-tag"><span class="copper-bullet"></span>Java</span>
+            <span class="skill-tag"><span class="copper-bullet"></span>Python</span>
+          </div>
+        </div>
+
+        <!-- Web Technologies -->
+        <div class="skill-category-card">
+          <div class="cat-head">
+            <div class="cat-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="cat-title">Web Technologies</h3>
+              <span class="cat-count">3 Technologies</span>
+            </div>
+          </div>
+          <div class="skill-tag-group">
+            <span class="skill-tag"><span class="copper-bullet"></span>HTML</span>
+            <span class="skill-tag"><span class="copper-bullet"></span>CSS</span>
+            <span class="skill-tag"><span class="copper-bullet"></span>JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Database -->
+        <div class="skill-category-card">
+          <div class="cat-head">
+            <div class="cat-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="cat-title">Database</h3>
+              <span class="cat-count">1 RDBMS</span>
+            </div>
+          </div>
+          <div class="skill-tag-group">
+            <span class="skill-tag"><span class="copper-bullet"></span>MySQL</span>
+          </div>
+        </div>
+
+        <!-- Developer Tools -->
+        <div class="skill-category-card">
+          <div class="cat-head">
+            <div class="cat-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="cat-title">Developer Tools</h3>
+              <span class="cat-count">4 Engineering Tools</span>
+            </div>
+          </div>
+          <div class="skill-tag-group">
+            <span class="skill-tag"><span class="copper-bullet"></span>VS Code</span>
+            <span class="skill-tag"><span class="copper-bullet"></span>Git</span>
+            <span class="skill-tag"><span class="copper-bullet"></span>GitHub</span>
+            <span class="skill-tag"><span class="copper-bullet"></span>Docker</span>
+          </div>
+        </div>
+
+        <!-- Microsoft Office -->
+        <div class="skill-category-card">
+          <div class="cat-head">
+            <div class="cat-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
+            </div>
+            <div>
+              <h3 class="cat-title">Microsoft Office</h3>
+              <span class="cat-count">3 Productivity Suites</span>
+            </div>
+          </div>
+          <div class="skill-tag-group">
+            <span class="skill-tag"><span class="copper-bullet"></span>Word</span>
+            <span class="skill-tag"><span class="copper-bullet"></span>Excel</span>
+            <span class="skill-tag"><span class="copper-bullet"></span>PowerPoint</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: PROJECTS ==================== -->
+    <section id="projects" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <div class="section-title-bar"></div>
+        <p class="section-subtitle">Featured Engineering &amp; Development Work</p>
+      </div>
+
+      <div class="projects-grid">
+        
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="proj-header-row">
+            <div class="proj-num-tag">PROJ 01 &bull; Hardware / IoT</div>
+            <span class="proj-role-badge">Role: Software &amp; Dashboard Developer</span>
+          </div>
+
+          <h3 class="proj-title">Smart Drip Irrigation with Weather Forecast Integration</h3>
+          
+          <p class="proj-summary">
+            Automated irrigation system reading live ground moisture, rain, and water level parameters with Blynk IoT remote control.
+          </p>
+
+          <ul class="proj-highlights">
+            <li>Configured ESP32 microcontrollers and embedded sensors for continuous environmental monitoring.</li>
+            <li>Automated pump control logic based on dynamic soil thresholds to maximize water efficiency.</li>
+            <li>Engineered interactive real-time dashboard controls via Blynk IoT for remote field operations.</li>
+          </ul>
+
+          <div class="proj-tech-stack">
+            <span class="stack-label">Tech Stack:</span>
+            <div class="stack-tags">
+              <span class="stack-pill">ESP32</span>
+              <span class="stack-pill">Arduino IDE</span>
+              <span class="stack-pill">DHT11</span>
+              <span class="stack-pill">Soil Moisture Sensor</span>
+              <span class="stack-pill">Rain Sensor</span>
+              <span class="stack-pill">Water Level Sensor</span>
+              <span class="stack-pill">Blynk IoT</span>
+              <span class="stack-pill">C++</span>
+            </div>
+          </div>
+
+          <div class="proj-actions">
+            <a href="https://github.com/Dharshini1909/smart-Drip-irrigation-with-weather-forecast-integration" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+              </svg>
+              <span>View on GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="proj-header-row">
+            <div class="proj-num-tag">PROJ 02 &bull; Software / AI</div>
+            <span class="proj-role-badge">Role: Backend Developer</span>
+          </div>
+
+          <h3 class="proj-title">AI-Based Smart Waste Management System</h3>
+          
+          <p class="proj-summary">
+            Deep learning model classifying waste streams with Flask backend, GPS collection point mapping, automated notifications, and PDF alerts.
+          </p>
+
+          <ul class="proj-highlights">
+            <li>Constructed deep learning classification pipeline utilizing TensorFlow/Keras and OpenCV to categorize waste.</li>
+            <li>Engineered robust Flask backend services integrating GPS coordinates for nearby collection centers.</li>
+            <li>Implemented automated email dispatch notifications and formatted PDF management reports.</li>
+          </ul>
+
+          <div class="proj-tech-stack">
+            <span class="stack-label">Tech Stack:</span>
+            <div class="stack-tags">
+              <span class="stack-pill">Python</span>
+              <span class="stack-pill">Flask</span>
+              <span class="stack-pill">TensorFlow/Keras</span>
+              <span class="stack-pill">OpenCV</span>
+              <span class="stack-pill">HTML</span>
+              <span class="stack-pill">CSS</span>
+              <span class="stack-pill">JavaScript</span>
+              <span class="stack-pill">JSON</span>
+              <span class="stack-pill">GPS</span>
+              <span class="stack-pill">Email/PDF APIs</span>
+            </div>
+          </div>
+
+          <div class="proj-actions">
+            <a href="https://github.com/Dharshini1909/ai-based-smart-waste-management-system-with-alerts" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+              </svg>
+              <span>View on GitHub</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 6: HACKATHONS ==================== -->
+    <section id="hackathons" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Hackathons</h2>
+        <div class="section-title-bar"></div>
+        <p class="section-subtitle">Competitive Coding &amp; Hackathon Innovations</p>
+      </div>
+
+      <div class="cards-duo-grid">
+        
+        <!-- Hackathon 1 -->
+        <div class="copper-glass-box hackathon-box">
+          <div class="box-head-row">
+            <span class="event-tag">CMR HACKFEST 3.0</span>
+            <span class="box-date-badge">January 2026</span>
+          </div>
+          <h3 class="hackathon-name">TruthScan AI</h3>
+          <p class="hackathon-desc">AI-based deepfake detection solution engineered to distinguish synthetic media manipulations.</p>
+          <div class="hackathon-action" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <a href="https://github.com/Dharshini1909/deepfake-TruthscanAi" target="_blank" rel="noopener noreferrer" class="btn-copper-outline" style="flex: 1; min-width: 140px;">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+              </svg>
+              <span>Repository</span>
+            </a>
+            <a href="certificates/Hackathon/cmrHackathon.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-fill" style="flex: 1; min-width: 150px;">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hackathon 2 -->
+        <div class="copper-glass-box hackathon-box">
+          <div class="box-head-row">
+            <span class="event-tag">GENESIS’25</span>
+            <span class="box-date-badge">February 2025</span>
+          </div>
+          <h3 class="hackathon-name">AI-Powered PPE Monitoring</h3>
+          <p class="hackathon-desc">Computer vision compliance monitoring system verifying site safety helmets and protective equipment.</p>
+          <div class="hackathon-action" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <a href="https://github.com/Dharshini1909/AI-powered-PPE-monitoring-" target="_blank" rel="noopener noreferrer" class="btn-copper-outline" style="flex: 1; min-width: 140px;">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+              </svg>
+              <span>Repository</span>
+            </a>
+            <a href="certificates/Hackathon/intraclghackathon.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-fill" style="flex: 1; min-width: 150px;">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate ↗</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 7: INTERNSHIP ==================== -->
+    <section id="internship" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Internship</h2>
+        <div class="section-title-bar"></div>
+        <p class="section-subtitle">Industry Experience &amp; Practical Exposure</p>
+      </div>
+
+      <div class="copper-glass-box intern-container">
+        <div class="intern-header-row">
+          <div class="intern-title-group">
+            <h3 class="intern-role">Cloud Computing</h3>
+            <h4 class="intern-company">Fantasy Solution, Trichy</h4>
+          </div>
+          <span class="intern-duration-badge">May – June 2025</span>
+        </div>
+
+        <blockquote class="intern-quote">
+          &ldquo;Configured cloud resources and deployed applications, gaining hands-on experience working in real-time cloud environments.&rdquo;
+        </blockquote>
+
+        <div class="intern-actions" style="margin-top: 1.5rem;">
+          <a href="certificates/internship.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-fill">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <span>View Certificate ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 8: ACHIEVEMENTS ==================== -->
+    <section id="achievements" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Achievements</h2>
+        <div class="section-title-bar"></div>
+        <p class="section-subtitle">Honors &amp; Academic Milestones</p>
+      </div>
+
+      <div class="achieve-grid">
+        
+        <!-- Achievement 1 -->
+        <div class="achieve-card">
+          <div class="achieve-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="7"></circle>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </svg>
+          </div>
+          <div class="achieve-body">
+            <span class="achieve-category">National Hackathon</span>
+            <h3 class="achieve-title">CMR HackFest 3.0</h3>
+            <p class="achieve-text">Selected among the leading teams at CMR HackFest 3.0 for TruthScan AI.</p>
+          </div>
+        </div>
+
+        <!-- Achievement 2 -->
+        <div class="achieve-card">
+          <div class="achieve-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+              <path d="M4 22h16"></path>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+            </svg>
+          </div>
+          <div class="achieve-body">
+            <span class="achieve-category">Academic Merit</span>
+            <h3 class="achieve-title">3rd Rank in IV Semester</h3>
+            <p class="achieve-text">Awarded 3rd Rank in IV Semester in the Department of Information Technology.</p>
+          </div>
+        </div>
+
+        <!-- Achievement 3 -->
+        <div class="achieve-card">
+          <div class="achieve-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+              <path d="M4 22h16"></path>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+            </svg>
+          </div>
+          <div class="achieve-body">
+            <span class="achieve-category">Academic Merit</span>
+            <h3 class="achieve-title">2nd Rank in VI Semester</h3>
+            <p class="achieve-text">Awarded 2nd Rank in VI Semester in the Department of Information Technology.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 9: PUBLICATIONS ==================== -->
+    <section id="publications" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Publications</h2>
+        <div class="section-title-bar"></div>
+        <p class="section-subtitle">Scholarly Articles &amp; Research Contributions</p>
+      </div>
+
+      <div class="publications-list">
+        
+        <!-- Entry 1: Journal Publication -->
+        <div class="copper-glass-box publication-box">
+          <div class="pub-top-row">
+            <span class="pub-journal-badge">IJSREM Journal</span>
+            <span class="pub-date-badge">October 2025</span>
+          </div>
+
+          <h3 class="pub-paper-title">Smart Drip Irrigation With Weather Forecast Integration</h3>
+          <p class="pub-authors"><strong>Authors:</strong> Dharanya K, Dharshini A, Roshini A</p>
+          
+          <div class="pub-doi-wrap">
+            <span class="doi-lbl">DOI:</span>
+            <span class="doi-val">10.55041/IJSREM52830</span>
+          </div>
+
+          <div class="pub-btns-group">
+            <a href="https://doi.org/10.55041/IJSREM52830" target="_blank" rel="noopener noreferrer" class="btn-copper-outline">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View DOI</span>
+            </a>
+            <a href="https://www.researchgate.net/publication/396122888_Smart_Drip_Irrigation_with_Weather_Forecast_Integration" target="_blank" rel="noopener noreferrer" class="btn-copper-fill">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Publication</span>
+            </a>
+            <a href="certificates/journal.jpeg" target="_blank" rel="noopener noreferrer" class="btn-copper-outline">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Entry 2: Conference -->
+        <div class="copper-glass-box publication-box">
+          <div class="pub-top-row">
+            <span class="pub-journal-badge">Conference</span>
+            <span class="pub-date-badge">March 25, 2026</span>
+          </div>
+
+          <h3 class="pub-paper-title">AI-Based Smart Waste Management System</h3>
+          <p class="pub-authors">Presented at <strong>ICRTET 2026</strong>, Gojan School of Business and Technology, Chennai, March 25, 2026.</p>
+
+          <div class="pub-btns-group">
+            <a href="certificates/conference.png" target="_blank" rel="noopener noreferrer" class="btn-copper-fill">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate ↗</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 10: COURSES ==================== -->
+    <section id="courses" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Courses</h2>
+        <div class="section-title-bar"></div>
+        <p class="section-subtitle">Technical Coursework &amp; Learning Programs</p>
+      </div>
+
+              <div class="courses-grid">
+
+        <!-- Course: NPTEL IoT -->
+        <div class="copper-glass-box course-box">
+          <span class="course-provider-tag">NPTEL</span>
+          <h3 class="course-title">Introduction to Internet of Things</h3>
+          <p class="course-details">12-week certification by IIT Kharagpur covering sensor architectures, IoT network protocols, and embedded edge compute.</p>
+          <a href="certificates/nptel/Introduction%20to%20Internet%20of%20Things.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-outline btn-card-action" style="margin-top: auto;">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <span>View Certificate &#x2197;</span>
+          </a>
+        </div>
+
+        <!-- Course: NPTEL ML -->
+        <div class="copper-glass-box course-box">
+          <span class="course-provider-tag">NPTEL</span>
+          <h3 class="course-title">Introduction to Machine Learning</h3>
+          <p class="course-details">12-week certification by IIT Madras covering supervised &amp; unsupervised learning, regression, classification, and model evaluation.</p>
+          <a href="certificates/nptel/machine%20learning.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-outline btn-card-action" style="margin-top: auto;">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <span>View Certificate &#x2197;</span>
+          </a>
+        </div>
+
+        <!-- Course: Value Added Course – Cyber Security -->
+        <div class="copper-glass-box course-box">
+          <span class="course-provider-tag">Value Added Course</span>
+          <h3 class="course-title">Cyber Security</h3>
+          <p class="course-details">Value Added Course on Cyber Security conducted by Kongunadu College of Engineering and Technology.</p>
+          <a href="certificates/valueAddedCourse.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-outline btn-card-action" style="margin-top: auto;">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <span>View Certificate &#x2197;</span>
+          </a>
+        </div>
+
+        <!-- Course: Diploma in Computer Application – CSC -->
+        <div class="copper-glass-box course-box">
+          <span class="course-provider-tag">CSC</span>
+          <h3 class="course-title">Diploma in Computer Application</h3>
+          <p class="course-details">Practical foundation in computer productivity applications, office suites, and operating fundamentals.</p>
+        </div>
+
+      </div>
+    </section>
+
+        <!-- ==================== SECTION 11: OTHER PARTICIPATIONS ==================== -->
+    <section id="other-participations" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Other Participations</h2>
+        <div class="section-title-bar"></div>
+        <p class="section-subtitle">Certifications &amp; Event Participations</p>
+      </div>
+
+      <!-- Category: IIT Bombay – Spoken Tutorials -->
+      <div class="section-header" style="margin-top:2rem;margin-bottom:0.5rem;">
+        <h3 class="section-title" style="font-size:1.1rem;">IIT Bombay &ndash; Spoken Tutorials</h3>
+      </div>
+      <div class="other-certs-grid">
+
+        <div class="copper-glass-box other-cert-box">
+          <div class="box-head-row">
+            <span class="event-tag">Spoken Tutorial</span>
+          </div>
+          <h3 class="hackathon-name">Java Training</h3>
+          <h4 class="other-cert-org">Spoken Tutorial Project &bull; IIT Bombay</h4>
+          <p class="hackathon-desc">Object-oriented programming, class design, interfaces, and exception handling.</p>
+          <div class="other-cert-action" style="margin-top: auto;">
+            <a href="certificates/IITbombay/java.png" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate &#x2197;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="copper-glass-box other-cert-box">
+          <div class="box-head-row">
+            <span class="event-tag">Spoken Tutorial</span>
+          </div>
+          <h3 class="hackathon-name">Python 3.4.3 Training</h3>
+          <h4 class="other-cert-org">Spoken Tutorial Project &bull; IIT Bombay</h4>
+          <p class="hackathon-desc">Python programming, data structures, functional modules, and standard library tools.</p>
+          <div class="other-cert-action" style="margin-top: auto;">
+            <a href="certificates/IITbombay/python.png" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate &#x2197;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="copper-glass-box other-cert-box">
+          <div class="box-head-row">
+            <span class="event-tag">Spoken Tutorial</span>
+          </div>
+          <h3 class="hackathon-name">RDBMS PostgreSQL Training</h3>
+          <h4 class="other-cert-org">Spoken Tutorial Project &bull; IIT Bombay</h4>
+          <p class="hackathon-desc">Relational schema design, SQL querying, indexing, and PostgreSQL database management.</p>
+          <div class="other-cert-action" style="margin-top: auto;">
+            <a href="certificates/IITbombay/rdbms.png" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate &#x2197;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="copper-glass-box other-cert-box">
+          <div class="box-head-row">
+            <span class="event-tag">Spoken Tutorial</span>
+          </div>
+          <h3 class="hackathon-name">C Training</h3>
+          <h4 class="other-cert-org">Spoken Tutorial Project &bull; IIT Bombay</h4>
+          <p class="hackathon-desc">Fundamental procedural programming, pointers, memory management, and file operations.</p>
+          <div class="other-cert-action" style="margin-top: auto;">
+            <a href="certificates/IITbombay/C.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate &#x2197;</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Category: Paper Presentations -->
+      <div class="section-header" style="margin-top:2rem;margin-bottom:0.5rem;">
+        <h3 class="section-title" style="font-size:1.1rem;">Paper Presentations</h3>
+      </div>
+      <div class="other-certs-grid">
+
+        <div class="copper-glass-box other-cert-box">
+          <div class="box-head-row">
+            <span class="event-tag">Paper Presentation</span>
+            <span class="box-date-badge">April 2024</span>
+          </div>
+          <h3 class="hackathon-name">Automatic Mobile Recharging Station</h3>
+          <h4 class="other-cert-org">LUNARA&#x2019;24 &bull; Bannari Amman Institute of Technology</h4>
+          <p class="hackathon-desc">Presented research paper titled &ldquo;Automatic Mobile Recharging Station&rdquo; at the national level symposium organized by the Department of Computer Science and Engineering.</p>
+          <div class="other-cert-action" style="margin-top: auto;">
+            <a href="certificates/PaperPresentation/paper%20presentation%20.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate &#x2197;</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Category: Workshops -->
+      <div class="section-header" style="margin-top:2rem;margin-bottom:0.5rem;">
+        <h3 class="section-title" style="font-size:1.1rem;">Workshops</h3>
+      </div>
+      <div class="other-certs-grid">
+
+        <div class="copper-glass-box other-cert-box">
+          <div class="box-head-row">
+            <span class="event-tag">Workshop</span>
+            <span class="box-date-badge">March 2025</span>
+          </div>
+          <h3 class="hackathon-name">Containerization with Kubernetes &amp; AI &ndash; LLM in Practice</h3>
+          <h4 class="other-cert-org">Puducherry Technological University &amp; NOKIA</h4>
+          <p class="hackathon-desc">Two-day national workshop on Docker containerization, Kubernetes cluster orchestration, and deploying Large Language Models (LLM) in enterprise practice.</p>
+          <div class="other-cert-action" style="margin-top: auto;">
+            <a href="certificates/workshops/kubernetesWorkshop.jpeg" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate &#x2197;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="copper-glass-box other-cert-box">
+          <div class="box-head-row">
+            <span class="event-tag">Workshop</span>
+            <span class="box-date-badge">April 2024</span>
+          </div>
+          <h3 class="hackathon-name">Cyber Security / Deep Learning</h3>
+          <h4 class="other-cert-org">LUNARA&#x2019;24 &bull; Bannari Amman Institute of Technology</h4>
+          <p class="hackathon-desc">Participated in technical hands-on workshop focused on cybersecurity defense architectures and deep learning models.</p>
+          <div class="other-cert-action" style="margin-top: auto;">
+            <a href="certificates/workshops/cybersecurityWorkshop.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate &#x2197;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="copper-glass-box other-cert-box">
+          <div class="box-head-row">
+            <span class="event-tag">Technical Event</span>
+            <span class="box-date-badge">April 2024</span>
+          </div>
+          <h3 class="hackathon-name">Tech Talk</h3>
+          <h4 class="other-cert-org">LUNARA&#x2019;24 &bull; Bannari Amman Institute of Technology</h4>
+          <p class="hackathon-desc">Participated in the competitive Tech Talk technical presentation event at the national level technical symposium.</p>
+          <div class="other-cert-action" style="margin-top: auto;">
+            <a href="certificates/techtalk.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate &#x2197;</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Category: Non-Technical Activities -->
+      <div class="section-header" style="margin-top:2rem;margin-bottom:0.5rem;">
+        <h3 class="section-title" style="font-size:1.1rem;">Non-Technical Activities</h3>
+      </div>
+      <div class="other-certs-grid">
+
+        <div class="copper-glass-box other-cert-box">
+          <div class="box-head-row">
+            <span class="event-tag">Participation</span>
+            <span class="box-date-badge">April 2024</span>
+          </div>
+          <h3 class="hackathon-name">IPL Auction</h3>
+          <h4 class="other-cert-org">LUNARA&#x2019;24 &bull; Bannari Amman Institute of Technology</h4>
+          <p class="hackathon-desc">Participated in the strategic player bidding and team budget optimization competition at the grand event LUNARA&#x2019;24.</p>
+          <div class="other-cert-action" style="margin-top: auto;">
+            <a href="certificates/nontech_iplauction.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate &#x2197;</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Category: MongoDB -->
+      <div class="section-header" style="margin-top:2rem;margin-bottom:0.5rem;">
+        <h3 class="section-title" style="font-size:1.1rem;">MongoDB</h3>
+      </div>
+      <div class="other-certs-grid">
+
+        <div class="copper-glass-box other-cert-box">
+          <div class="box-head-row">
+            <span class="event-tag">Certification</span>
+          </div>
+          <h3 class="hackathon-name">MongoDB Certificate</h3>
+          <h4 class="other-cert-org">MongoDB</h4>
+          <div class="other-cert-action" style="margin-top: auto;">
+            <a href="certificates/MongoDB.pdf" target="_blank" rel="noopener noreferrer" class="btn-copper-fill btn-card-action">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>View Certificate &#x2197;</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== SECTION 12: CONTACT ==================== -->
+    <section id="contact" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Contact</h2>
+        <div class="section-title-bar"></div>
+        <p class="section-subtitle">Get In Touch &amp; Connect</p>
+      </div>
+
+      <div class="contact-split-grid">
+        
+        <!-- Contact Info Column -->
+        <div class="contact-info-panel">
+          <h3 class="contact-pitch-title">Let's build something remarkable.</h3>
+          <p class="contact-pitch-text">
+            I am actively looking for placement opportunities, internships, and technical collaboration. Feel free to reach out directly through any of the channels below.
+          </p>
+
+          <div class="contact-cards-list">
+            <a href="mailto:aruldassdharsh@gmail.com" class="contact-direct-item">
+              <div class="contact-icon-cube">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-text-wrap">
+                <span class="contact-type-lbl">Email:</span>
+                <span class="contact-data-val">aruldassdharsh@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="tel:+919344429427" class="contact-direct-item">
+              <div class="contact-icon-cube">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div class="contact-text-wrap">
+                <span class="contact-type-lbl">Phone:</span>
+                <span class="contact-data-val">+91 9344429427</span>
+              </div>
+            </a>
+
+            <a href="https://github.com/Dharshini1909" target="_blank" rel="noopener noreferrer" class="contact-direct-item">
+              <div class="contact-icon-cube">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                </svg>
+              </div>
+              <div class="contact-text-wrap">
+                <span class="contact-type-lbl">GitHub:</span>
+                <span class="contact-data-val">github.com/Dharshini1909</span>
+              </div>
+            </a>
+
+            <div class="contact-direct-item">
+              <div class="contact-icon-cube">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="contact-text-wrap">
+                <span class="contact-type-lbl">Location:</span>
+                <span class="contact-data-val">33/76, K.K.Nagar, Kurinjipadi, Cuddalore – 607302</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form Column -->
+        <div class="copper-glass-box contact-form-card">
+          <h3 class="form-title">Send a Direct Message</h3>
+          
+          <div id="contactFormStatus" class="form-alert" role="alert" aria-live="polite"></div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="fName" class="form-label">Your Name <span class="req">*</span></label>
+              <input type="text" id="fName" class="input-control" placeholder="e.g. Recruiter / Team Lead" required>
+            </div>
+
+            <div class="form-group">
+              <label for="fEmail" class="form-label">Your Email <span class="req">*</span></label>
+              <input type="email" id="fEmail" class="input-control" placeholder="e.g. hr@company.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="fMsg" class="form-label">Message <span class="req">*</span></label>
+              <textarea id="fMsg" class="input-control textarea-control" rows="4" placeholder="Hello Dharshini, we would like to discuss an opportunity..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-copper-fill btn-full" id="fSubmitBtn">
+              <span>Send Message</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer Bar -->
+    <footer class="footer-bar">
+      <div class="footer-content">
+        <p>&copy; 2026 Dharshini &bull; Information Technology Portfolio</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Scroll To Top Floating Button -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+
+  <!-- ── Portfolio Visitor Notification (Web3Forms) ─────────────────────────
+       Sends a one-time-per-session notification to smartdrip19@gmail.com
+       when someone opens the portfolio.
+
+       HOW TO ACTIVATE:
+         1. Go to https://web3forms.com
+         2. Enter smartdrip19@gmail.com → click "Create Access Key"
+         3. Copy the key
+         4. Replace YOUR_WEB3FORMS_KEY_HERE below AND in script.js (same key works for both)
+  ──────────────────────────────────────────────────────────────────────────── -->
+  <script>
+    (function () {
+      'use strict';
+      var VISITOR_KEY = 'YOUR_WEB3FORMS_KEY_HERE'; // ← paste your Web3Forms key here
+      if (!VISITOR_KEY || VISITOR_KEY === 'YOUR_WEB3FORMS_KEY_HERE') return;
+      var SESSION_FLAG = 'pf_visit_notified';
+
+      if (sessionStorage.getItem(SESSION_FLAG)) return; // fires only once per browser session
+
+      sessionStorage.setItem(SESSION_FLAG, '1');
+
+      var now = new Date();
+      var visitTime = now.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', hour12: true });
+      var referrer  = document.referrer || 'Direct / Unknown';
+      var page      = location.href;
+
+      var fd = new FormData();
+      fd.append('access_key', VISITOR_KEY);
+      fd.append('subject',  'Portfolio Visit – ' + visitTime);
+      fd.append('name',     'Portfolio Visitor');
+      fd.append('email',    'noreply@example.com'); // required field; visitor email not collected
+      fd.append('message',
+        'Someone visited your portfolio.\n\n'
+        + 'Date & Time : ' + visitTime + '\n'
+        + 'Page        : ' + page + '\n'
+        + 'Referrer    : ' + referrer + '\n'
+      );
+
+      // sendBeacon fires reliably even if the user navigates away immediately
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon('https://api.web3forms.com/submit', fd);
+      } else {
+        fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd }).catch(function(){});
+      }
+    })();
+  </script>
+</body>
+</html>
