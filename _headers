@@ -1,6 +1,8 @@
 /*
-  # Security headers applied to every response by Cloudflare Pages
-
+  Cloudflare Pages _headers — applied to every response
+  https://developers.cloudflare.com/pages/configuration/headers/
+*/
+https://:project.pages.dev/*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 1; mode=block
@@ -8,3 +10,35 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://api.web3forms.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com; frame-ancestors 'none'
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+/*
+  Route-specific: serve ALL PDF files inline so they open in the browser
+  instead of triggering a download (critical for Android Chrome).
+*/
+/certificates/*.pdf
+  Content-Type: application/pdf
+  Content-Disposition: inline
+
+/certificates/Hackathon/*.pdf
+  Content-Type: application/pdf
+  Content-Disposition: inline
+
+/certificates/IITbombay/*.pdf
+  Content-Type: application/pdf
+  Content-Disposition: inline
+
+/certificates/Infosys Spring Board/*.pdf
+  Content-Type: application/pdf
+  Content-Disposition: inline
+
+/certificates/nptel/*.pdf
+  Content-Type: application/pdf
+  Content-Disposition: inline
+
+/certificates/PaperPresentation/*.pdf
+  Content-Type: application/pdf
+  Content-Disposition: inline
+
+/certificates/projects outputs/*.pdf
+  Content-Type: application/pdf
+  Content-Disposition: inline

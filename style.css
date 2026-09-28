@@ -1897,6 +1897,11 @@ ul {
     overflow-x: hidden;
   }
 
+  /* Hide profile photo on mobile — no empty space left behind */
+  .hero-mobile-profile {
+    display: none !important;
+  }
+
   .hero-container {
     width: 100%;
   }
