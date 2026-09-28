@@ -1784,7 +1784,8 @@ ul {
 }
 
 /* Mobile Hero Profile (hidden on desktop) */
-.hero-mobile-profile {
+.hero-mobile-profile,
+.hero-profile-container {
   display: none;
 }
 
@@ -1861,14 +1862,16 @@ ul {
   }
 }
 
-@media (max-width: 991px) {
-  .hero-mobile-profile {
+@media (max-width: 991px) and (min-width: 769px) {
+  .hero-mobile-profile,
+  .hero-profile-container {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
   }
 
-  .hero-mobile-profile .profile-img-wrap {
+  .hero-mobile-profile .profile-img-wrap,
+  .hero-profile-container .profile-img-wrap {
     width: 130px;
     height: 130px;
     margin: 0 auto;
@@ -1897,9 +1900,21 @@ ul {
     overflow-x: hidden;
   }
 
-  /* Hide profile photo on mobile — no empty space left behind */
-  .hero-mobile-profile {
+  /* Completely hide Home/Hero profile photo and container on mobile (max-width: 768px) — zero empty space */
+  .hero-profile-container,
+  .hero-mobile-profile,
+  #heroProfilePhoto {
     display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    line-height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 
   .hero-container {
@@ -2071,9 +2086,16 @@ ul {
     font-size: 1.15rem;
   }
 
-  .hero-mobile-profile .profile-img-wrap {
-    width: 120px;
-    height: 120px;
+  .hero-profile-container,
+  .hero-mobile-profile,
+  #heroProfilePhoto {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
   }
 
   .section-title {
