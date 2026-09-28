@@ -213,75 +213,128 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('contactFormStatus');
   const fSubmitBtn = document.getElementById('fSubmitBtn');
+  let isSubmitting = false;
+
+  // ── Web3Forms Access Key ──────────────────────────────────────────────────
+  // Configured to deliver submissions to: smartdrip19@gmail.com
+  // Obtain your free access key in 30 seconds at: https://web3forms.com
+  // Enter smartdrip19@gmail.com -> Click "Create Access Key" -> Paste key below:
+  const WEB3_KEY = '1bc8c11a-8ea9-400f-b3a4-8860f5718929';
 
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('fName').value.trim();
-      const email = document.getElementById('fEmail').value.trim();
-      const msg = document.getElementById('fMsg').value.trim();
+      if (isSubmitting) return; // Prevent duplicate submissions
+
+      const nameInput = document.getElementById('fName');
+      const emailInput = document.getElementById('fEmail');
+      const msgInput = document.getElementById('fMsg');
+      const botcheck = document.getElementById('botcheck');
+
+      // Honeypot check - reject bots
+      if (botcheck && botcheck.checked) {
+        return;
+      }
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const msg = msgInput ? msgInput.value.trim() : '';
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      if (!name || !email || !msg) {
-        showFormAlert('Please fill out all required fields.', 'error');
+      // Client-side validations
+      if (!name) {
+        showFormAlert('Please enter your name.', 'error');
+        if (nameInput) nameInput.focus();
+        return;
+      }
+
+      if (!email) {
+        showFormAlert('Please enter your email address.', 'error');
+        if (emailInput) emailInput.focus();
         return;
       }
 
       if (!emailRegex.test(email)) {
-        showFormAlert('Please enter a valid email address.', 'error');
+        showFormAlert('Please enter a valid email address (e.g. name@example.com).', 'error');
+        if (emailInput) emailInput.focus();
         return;
       }
 
-      if (fSubmitBtn) {
-        fSubmitBtn.disabled = true;
-        fSubmitBtn.innerHTML = '<span>Sending Message...</span>';
+      if (!msg || msg.length < 5) {
+        showFormAlert('Please enter a message (at least 5 characters).', 'error');
+        if (msgInput) msgInput.focus();
+        return;
       }
 
-      // ── Real email delivery via Web3Forms ────────────────────────────────
-      // One free key delivers BOTH this contact form AND the visitor notification.
-      // Get yours: https://web3forms.com → enter smartdrip19@gmail.com → Create Key
-      const WEB3_KEY = 'YOUR_WEB3FORMS_KEY_HERE'; // ← paste the same key here
+      // Check if Web3Forms key is configured
+      if (!WEB3_KEY || WEB3_KEY === 'YOUR_WEB3FORMS_KEY_HERE') {
+        showFormAlert('Configuration Required: Web3Forms access key is missing. Please generate a free key at web3forms.com for smartdrip19@gmail.com and paste it into script.js.', 'error');
+        console.warn('[Contact Form] Missing Web3Forms access key. Register smartdrip19@gmail.com at https://web3forms.com to obtain your key.');
+        return;
+      }
 
-      const formData = new FormData();
-      formData.append('access_key', WEB3_KEY);
-      formData.append('name', name);
-      formData.append('email', email);
-      formData.append('message', msg);
-      formData.append('subject', 'Portfolio Contact: New message from ' + name);
+      // Set Loading State
+      isSubmitting = true;
+      if (fSubmitBtn) {
+        fSubmitBtn.disabled = true;
+        fSubmitBtn.innerHTML = `
+          <svg class="spin-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="animation: spin 1s linear infinite;">
+            <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
+            <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
+          </svg>
+          <span>Sending Message...</span>
+        `;
+      }
 
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) {
-            showFormAlert('Thank you! Your message has been sent successfully.', 'success');
-            contactForm.reset();
-          } else {
-            showFormAlert('Oops! Something went wrong. Please try again or email directly.', 'error');
-          }
-        })
-        .catch(() => {
-          showFormAlert('Network error. Please try again or email directly.', 'error');
-        })
-        .finally(() => {
-          if (fSubmitBtn) {
-            fSubmitBtn.disabled = false;
-            fSubmitBtn.innerHTML = `
-              <span>Send Message</span>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-              </svg>
-            `;
-          }
-          setTimeout(() => {
-            if (formStatus) formStatus.style.display = 'none';
-          }, 6000);
+      try {
+        const payload = {
+          access_key: WEB3_KEY,
+          name: name,
+          email: email,
+          message: msg,
+          subject: `Portfolio Contact: New message from ${name}`,
+          from_name: 'Portfolio Contact Form'
+        };
+
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
         });
+
+        const data = await response.json();
+
+        if (data.success) {
+          showFormAlert('Message sent successfully! Thank you for contacting me.', 'success');
+          contactForm.reset();
+        } else {
+          showFormAlert(data.message || 'Submission failed. Please try again or email directly to smartdrip19@gmail.com.', 'error');
+        }
+      } catch (err) {
+        showFormAlert('Network error occurred. Please check your connection or email directly to smartdrip19@gmail.com.', 'error');
+      } finally {
+        isSubmitting = false;
+        if (fSubmitBtn) {
+          fSubmitBtn.disabled = false;
+          fSubmitBtn.innerHTML = `
+            <span>Send Message</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          `;
+        }
+        setTimeout(() => {
+          if (formStatus && formStatus.dataset.type === 'success') {
+            formStatus.style.display = 'none';
+          }
+        }, 8000);
+      }
     });
   }
 
@@ -289,6 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!formStatus) return;
     formStatus.style.display = 'block';
     formStatus.textContent = message;
+    formStatus.dataset.type = type;
 
     if (type === 'error') {
       formStatus.style.background = 'rgba(239, 68, 68, 0.15)';

@@ -243,6 +243,7 @@
     <section id="hero" class="hero-section">
       <div class="hero-bg-overlay"></div>
 
+      <div class="hero-container">
         
         <h1 class="hero-name">Dharshini</h1>
         
@@ -277,6 +278,14 @@
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </a>
+        </div>
+
+        <!-- Mobile Hero Profile Image (Visible on mobile screens only; stacks below content) -->
+        <div class="hero-mobile-profile" aria-hidden="true">
+          <div class="profile-img-wrap">
+            <img src="profile.jpg" alt="Dharshini - IT Student" class="profile-img">
+            <span class="online-indicator" title="Available for opportunities"></span>
+          </div>
         </div>
       </div>
     </section>
@@ -1290,6 +1299,8 @@
           <div id="contactFormStatus" class="form-alert" role="alert" aria-live="polite"></div>
 
           <form id="contactForm" novalidate>
+            <!-- Anti-spam honeypot (hidden from human visitors) -->
+            <input type="checkbox" name="botcheck" id="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
             <div class="form-group">
               <label for="fName" class="form-label">Your Name <span class="req">*</span></label>
               <input type="text" id="fName" class="input-control" placeholder="e.g. Recruiter / Team Lead" required>

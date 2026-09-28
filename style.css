@@ -1774,8 +1774,42 @@ ul {
   box-shadow: 0 6px 20px rgba(var(--copper-primary-rgb), 0.45);
 }
 
+/* Mobile Hero Profile (hidden on desktop) */
+.hero-mobile-profile {
+  display: none;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Touch targets and overflow safety */
+.btn-copper-fill,
+.btn-copper-outline,
+#fSubmitBtn,
+.mobile-nav-toggle,
+.scroll-top-btn,
+.theme-toggle-btn {
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+/* Safe word breaking for long text */
+.fact-value,
+.fact-value a,
+.contact-data-val,
+.pub-doi-wrap,
+.doi-val,
+.intern-company,
+.hero-typing-wrap,
+.hero-name {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 /* --------------------------------------------------------------------------
-   20. RESPONSIVE BREAKPOINTS
+   20. RESPONSIVE BREAKPOINTS (Mobile-First Optimizations 320px - 768px - 1199px)
    -------------------------------------------------------------------------- */
 @media (max-width: 1199px) {
   :root {
@@ -1797,6 +1831,7 @@ ul {
   .main-content {
     margin-left: 0;
     width: 100%;
+    max-width: 100%;
   }
 
   .section-block {
@@ -1817,32 +1852,91 @@ ul {
   }
 }
 
+@media (max-width: 991px) {
+  .hero-mobile-profile {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .hero-mobile-profile .profile-img-wrap {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .main-content {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
   .section-block {
     padding: 3.5rem 1.25rem;
+    overflow-x: hidden;
   }
 
   .hero-section {
-    padding: 5rem 1.25rem 3.5rem;
+    padding: 5rem 1.25rem 3rem;
+    min-height: auto;
+    overflow-x: hidden;
+  }
+
+  .hero-container {
+    width: 100%;
+  }
+
+  .hero-name {
+    font-size: clamp(2.4rem, 8vw, 3.4rem);
+  }
+
+  .hero-typing-wrap {
+    font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+  }
+
+  .hero-motto {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-brief-summary {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
   }
 
   .about-card-spotlight {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: 1.75rem 1.25rem;
   }
 
   .about-photo-wrap {
     max-width: 160px;
-    margin: 0 auto;
+    margin: 0 auto 1.25rem;
   }
 
   .about-facts-grid {
     grid-template-columns: 1fr;
     text-align: left;
+    gap: 0.75rem;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    padding: 1.5rem 1.25rem;
   }
 
   .cards-duo-grid {
@@ -1865,12 +1959,214 @@ ul {
     grid-template-columns: 1fr;
   }
 
+  .timeline-container {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-marker {
+    left: -1.5rem;
+  }
+
+  .timeline-container::before {
+    left: 5px;
+  }
+
+  .marker-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+  .copper-glass-box {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .intern-container {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .publication-box {
+    padding: 1.5rem 1.25rem;
+  }
+
   .pub-btns-group {
     flex-direction: column;
+    gap: 0.75rem;
   }
 
   .pub-btns-group .btn-copper-fill,
   .pub-btns-group .btn-copper-outline {
     width: 100%;
+    justify-content: center;
+  }
+
+  .contact-form-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .footer-bar {
+    padding: 2rem 1.25rem;
+  }
+
+  .scroll-top-btn {
+    bottom: 18px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hero-cta-group .btn-copper-fill,
+  .hero-cta-group .btn-copper-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .proj-actions .btn-copper-fill,
+  .proj-actions .btn-copper-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --sidebar-width: min(290px, 85vw);
+  }
+
+  .section-block {
+    padding: 3rem 1rem;
+  }
+
+  .hero-section {
+    padding: 4.5rem 1rem 2.75rem;
+  }
+
+  .hero-name {
+    font-size: clamp(2rem, 9vw, 2.7rem);
+    letter-spacing: -0.5px;
+  }
+
+  .hero-typing-wrap {
+    font-size: 1.15rem;
+  }
+
+  .hero-mobile-profile .profile-img-wrap {
+    width: 120px;
+    height: 120px;
+  }
+
+  .section-title {
+    font-size: 1.55rem;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .about-card-spotlight,
+  .copper-box-panel,
+  .pillar-card,
+  .copper-glass-box,
+  .skill-category-card,
+  .project-card,
+  .achieve-card,
+  .publication-box,
+  .contact-form-card {
+    padding: 1.35rem 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .intern-container {
+    padding: 1.35rem 1rem;
+  }
+
+  .timeline-container {
+    padding-left: 1.25rem;
+  }
+
+  .timeline-marker {
+    left: -1.25rem;
+  }
+
+  .timeline-container::before {
+    left: 4px;
+  }
+
+  .contact-direct-item {
+    padding: 0.85rem 1rem;
+  }
+
+  .contact-icon-cube {
+    width: 38px;
+    height: 38px;
+  }
+
+  .contact-split-grid {
+    gap: 1.5rem;
+  }
+
+  .footer-bar {
+    padding: 1.75rem 1rem;
+  }
+
+  .pub-doi-wrap {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 360px) {
+  .section-block {
+    padding: 2.25rem 0.75rem;
+  }
+
+  .hero-section {
+    padding: 4rem 0.75rem 2.25rem;
+  }
+
+  .hero-name {
+    font-size: 1.85rem;
+  }
+
+  .hero-typing-wrap {
+    font-size: 1.02rem;
+  }
+
+  .hero-motto {
+    font-size: 0.92rem;
+  }
+
+  .hero-brief-summary {
+    font-size: 0.88rem;
+  }
+
+  .about-card-spotlight,
+  .copper-box-panel,
+  .pillar-card,
+  .copper-glass-box,
+  .skill-category-card,
+  .project-card,
+  .achieve-card,
+  .publication-box,
+  .contact-form-card {
+    padding: 1.15rem 0.75rem;
+  }
+
+  .fact-item {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .contact-direct-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
   }
 }
