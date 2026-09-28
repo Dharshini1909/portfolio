@@ -8,11 +8,9 @@
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://api.web3forms.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com; frame-ancestors 'none'
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 
-# Route-specific headers for PDFs: open inline in browser
+# MIME type for PDF documents
 /certificates/*
   Content-Type: application/pdf
-  Content-Disposition: inline
 
 /*.pdf
   Content-Type: application/pdf
-  Content-Disposition: inline
