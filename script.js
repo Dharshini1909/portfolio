@@ -354,4 +354,62 @@ document.addEventListener('DOMContentLoaded', () => {
       formStatus.style.color = '#34d399';
     }
   }
+
+  /* --------------------------------------------------------------------------
+     7. DEVICE-SPECIFIC PDF BEHAVIOR (OPEN INLINE ON DESKTOP, DOWNLOAD ON MOBILE)
+     -------------------------------------------------------------------------- */
+  function updatePdfLinksBehavior() {
+    // Mobile screen condition: max-width 768px
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const pdfLinks = document.querySelectorAll('a[href*=".pdf"]');
+
+    pdfLinks.forEach(link => {
+      const rawHref = link.getAttribute('href');
+      if (!rawHref) return;
+
+      const urlPath = rawHref.split('?')[0];
+      const filename = decodeURIComponent(urlPath.substring(urlPath.lastIndexOf('/') + 1));
+
+      if (isMobile) {
+        // On mobile (<= 768px): trigger download attribute & append ?download=1 for attachment disposition
+        link.setAttribute('download', filename);
+        if (!rawHref.includes('download=1')) {
+          const sep = rawHref.includes('?') ? '&' : '?';
+          link.setAttribute('href', rawHref + sep + 'download=1');
+        }
+      } else {
+        // On desktop (> 768px): view/open inline in browser, no forced download
+        link.removeAttribute('download');
+        if (rawHref.includes('download=1')) {
+          const cleanHref = rawHref.replace(/[?&]download=1/, '').replace(/\?$/, '');
+          link.setAttribute('href', cleanHref);
+        }
+      }
+    });
+  }
+
+  // Initialise on load and listen for resize
+  updatePdfLinksBehavior();
+  window.addEventListener('resize', updatePdfLinksBehavior, { passive: true });
+
+  // Safety click delegation: ensure attributes are set at click time based on active screen width
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href*=".pdf"]');
+    if (!link) return;
+
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) {
+      const rawHref = link.getAttribute('href');
+      const urlPath = rawHref.split('?')[0];
+      const filename = decodeURIComponent(urlPath.substring(urlPath.lastIndexOf('/') + 1));
+      link.setAttribute('download', filename);
+      if (!rawHref.includes('download=1')) {
+        const sep = rawHref.includes('?') ? '&' : '?';
+        link.setAttribute('href', rawHref + sep + 'download=1');
+      }
+    } else {
+      link.removeAttribute('download');
+    }
+  });
 });
+
