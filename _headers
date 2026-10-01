@@ -9,8 +9,5 @@
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 
 # MIME type for PDF documents
-/certificates/*
-  Content-Type: application/pdf
-
 /*.pdf
   Content-Type: application/pdf

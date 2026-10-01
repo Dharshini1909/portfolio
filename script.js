@@ -356,60 +356,111 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     7. DEVICE-SPECIFIC PDF BEHAVIOR (OPEN INLINE ON DESKTOP, DOWNLOAD ON MOBILE)
+     7. DEVICE-SPECIFIC DOCUMENT & CERTIFICATE BEHAVIOR
+        - DESKTOP (>768px): All documents/certificates open/view inline in a new tab.
+        - MOBILE (≤768px) : All documents/certificates download directly to the device.
      -------------------------------------------------------------------------- */
-  function updatePdfLinksBehavior() {
-    // Mobile screen condition: max-width 768px
+
+  /**
+   * Identifies whether an anchor tag points to a downloadable portfolio document
+   * (PDFs, project outputs, resume, or any certificate/document in certificates/).
+   */
+  function isDocumentLink(link) {
+    if (!link || !link.getAttribute) return false;
+    const rawHref = link.getAttribute('href');
+    if (!rawHref) return false;
+
+    const trimmed = rawHref.trim();
+    if (trimmed.startsWith('#') || trimmed.startsWith('mailto:') || trimmed.startsWith('tel:') || trimmed.startsWith('javascript:')) {
+      return false;
+    }
+
+    try {
+      const cleanPath = decodeURIComponent(trimmed.split('?')[0].split('#')[0]).toLowerCase();
+      if (cleanPath.endsWith('.pdf') || cleanPath.endsWith('.doc') || cleanPath.endsWith('.docx')) {
+        return true;
+      }
+      if (cleanPath.startsWith('certificates/') || cleanPath.includes('/certificates/')) {
+        return true;
+      }
+    } catch (e) {
+      if (trimmed.toLowerCase().includes('.pdf')) return true;
+    }
+    return false;
+  }
+
+  /**
+   * Derive a clean, human-readable filename from the raw href path.
+   */
+  function getFilenameFromHref(href) {
+    try {
+      const cleanPath = decodeURIComponent(href.split('?')[0].split('#')[0]);
+      const lastSlash = cleanPath.lastIndexOf('/');
+      const name = lastSlash >= 0 ? cleanPath.substring(lastSlash + 1) : cleanPath;
+      return name.trim() || 'document.pdf';
+    } catch (e) {
+      return 'document.pdf';
+    }
+  }
+
+  /**
+   * Configure a single link element for either mobile download or desktop inline view.
+   * Safe to call repeatedly (idempotent).
+   */
+  function applyDocumentBehavior(link, isMobile) {
+    const rawHref = link.getAttribute('href');
+    if (!rawHref) return;
+
+    // Clean href without existing download=1 parameter
+    const cleanHref = rawHref
+      .replace(/([?&])download=1(&|$)/, '$2')
+      .replace(/[?&]$/, '');
+
+    const filename = getFilenameFromHref(cleanHref);
+
+    if (isMobile) {
+      // MOBILE: direct download to phone with correct filename
+      link.setAttribute('download', filename);
+      const sep = cleanHref.includes('?') ? '&' : '?';
+      link.setAttribute('href', cleanHref + sep + 'download=1');
+      // Remove target="_blank" on mobile so mobile browsers trigger direct download
+      // without opening an empty/blank tab
+      link.removeAttribute('target');
+    } else {
+      // DESKTOP: open/view inline in browser in a new tab
+      link.removeAttribute('download');
+      link.setAttribute('href', cleanHref);
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    }
+  }
+
+  /** Walk every <a> tag in the document and configure document links for current viewport. */
+  function updateAllDocumentLinks() {
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    const pdfLinks = document.querySelectorAll('a[href*=".pdf"]');
 
-    pdfLinks.forEach(link => {
-      const rawHref = link.getAttribute('href');
-      if (!rawHref) return;
-
-      const urlPath = rawHref.split('?')[0];
-      const filename = decodeURIComponent(urlPath.substring(urlPath.lastIndexOf('/') + 1));
-
-      if (isMobile) {
-        // On mobile (<= 768px): trigger download attribute & append ?download=1 for attachment disposition
-        link.setAttribute('download', filename);
-        if (!rawHref.includes('download=1')) {
-          const sep = rawHref.includes('?') ? '&' : '?';
-          link.setAttribute('href', rawHref + sep + 'download=1');
-        }
-      } else {
-        // On desktop (> 768px): view/open inline in browser, no forced download
-        link.removeAttribute('download');
-        if (rawHref.includes('download=1')) {
-          const cleanHref = rawHref.replace(/[?&]download=1/, '').replace(/\?$/, '');
-          link.setAttribute('href', cleanHref);
-        }
+    document.querySelectorAll('a[href]').forEach(link => {
+      if (isDocumentLink(link)) {
+        applyDocumentBehavior(link, isMobile);
       }
     });
   }
 
-  // Initialise on load and listen for resize
-  updatePdfLinksBehavior();
-  window.addEventListener('resize', updatePdfLinksBehavior, { passive: true });
+  // ── Run on page load ─────────────────────────────────────────────────────
+  updateAllDocumentLinks();
 
-  // Safety click delegation: ensure attributes are set at click time based on active screen width
-  document.addEventListener('click', (e) => {
-    const link = e.target.closest('a[href*=".pdf"]');
-    if (!link) return;
+  // ── Re-run on viewport resize and device orientation change ──────────────
+  window.addEventListener('resize', updateAllDocumentLinks, { passive: true });
+  window.addEventListener('orientationchange', updateAllDocumentLinks, { passive: true });
+
+  // ── Safety click-time guard (prevents race conditions on fast taps) ───────
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('a[href]');
+    if (!link || !isDocumentLink(link)) return;
 
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (isMobile) {
-      const rawHref = link.getAttribute('href');
-      const urlPath = rawHref.split('?')[0];
-      const filename = decodeURIComponent(urlPath.substring(urlPath.lastIndexOf('/') + 1));
-      link.setAttribute('download', filename);
-      if (!rawHref.includes('download=1')) {
-        const sep = rawHref.includes('?') ? '&' : '?';
-        link.setAttribute('href', rawHref + sep + 'download=1');
-      }
-    } else {
-      link.removeAttribute('download');
-    }
-  });
+    applyDocumentBehavior(link, isMobile);
+  }, true); // capture phase — runs before default navigation
 });
+
 
