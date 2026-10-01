@@ -418,20 +418,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const filename = getFilenameFromHref(cleanHref);
 
+    // ALWAYS ensure target="_blank" and rel="noopener noreferrer" on both mobile and desktop.
+    // Keeping target="_blank" ensures download requests are dispatched in an auxiliary context,
+    // which prevents mobile Chrome/Safari from freezing subsequent link taps or prompting
+    // "Do you want to download again?" upon page refresh.
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+
     if (isMobile) {
       // MOBILE: direct download to phone with correct filename
       link.setAttribute('download', filename);
       const sep = cleanHref.includes('?') ? '&' : '?';
       link.setAttribute('href', cleanHref + sep + 'download=1');
-      // Remove target="_blank" on mobile so mobile browsers trigger direct download
-      // without opening an empty/blank tab
-      link.removeAttribute('target');
     } else {
       // DESKTOP: open/view inline in browser in a new tab
       link.removeAttribute('download');
       link.setAttribute('href', cleanHref);
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
     }
   }
 
@@ -452,15 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Re-run on viewport resize and device orientation change ──────────────
   window.addEventListener('resize', updateAllDocumentLinks, { passive: true });
   window.addEventListener('orientationchange', updateAllDocumentLinks, { passive: true });
-
-  // ── Safety click-time guard (prevents race conditions on fast taps) ───────
-  document.addEventListener('click', function (e) {
-    const link = e.target.closest('a[href]');
-    if (!link || !isDocumentLink(link)) return;
-
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    applyDocumentBehavior(link, isMobile);
-  }, true); // capture phase — runs before default navigation
 });
+
 
 

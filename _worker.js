@@ -10,8 +10,15 @@ export default {
     const isJpg = pathnameLower.endsWith('.jpg') || pathnameLower.endsWith('.jpeg');
     const isDoc = isPdf || isPng || isJpg || pathnameLower.startsWith('/certificates/');
 
-    // Check if client explicitly requests download via query param
-    const isDownload = url.searchParams.has('download');
+    // Determine if request is from mobile or explicitly requested as download
+    const ua = request.headers.get('user-agent') || '';
+    const chMobile = request.headers.get('sec-ch-ua-mobile');
+    const isMobileUA = chMobile === '?1' || /Android|iPhone|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+
+    // Explicit query params override UA detection if present
+    const hasDownloadParam = url.searchParams.has('download');
+    const hasInlineParam = url.searchParams.has('inline') || url.searchParams.has('view');
+    const isDownload = hasDownloadParam || (isMobileUA && !hasInlineParam);
 
     // 1. Clean URL for static asset lookup by stripping query parameters
     // This guarantees asset manifest lookup finds the exact file on disk
@@ -88,6 +95,8 @@ export default {
       }
 
       headers.set('X-Content-Type-Options', 'nosniff');
+      headers.set('Vary', 'User-Agent, Sec-CH-UA-Mobile');
+      headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
 
       // Preserve the exact response body stream without corruption
       return new Response(response.body, {
