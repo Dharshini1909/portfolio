@@ -4,85 +4,68 @@ export default {
     const pathname = url.pathname;
     const pathnameLower = pathname.toLowerCase();
 
-    // Check if the requested asset is a PDF or document in certificates/
-    const isPdf = pathnameLower.endsWith('.pdf');
-    const isPng = pathnameLower.endsWith('.png');
-    const isJpg = pathnameLower.endsWith('.jpg') || pathnameLower.endsWith('.jpeg');
-    const isDoc = isPdf || isPng || isJpg || pathnameLower.startsWith('/certificates/');
+    // Detect document/certificate assets by extension or path prefix
+    const isPdf  = pathnameLower.endsWith('.pdf');
+    const isPng  = pathnameLower.endsWith('.png');
+    const isJpg  = pathnameLower.endsWith('.jpg') || pathnameLower.endsWith('.jpeg');
+    const isDoc  = isPdf || isPng || isJpg || pathnameLower.startsWith('/certificates/');
 
-    // Determine if request is from mobile or explicitly requested as download
-    const ua = request.headers.get('user-agent') || '';
-    const chMobile = request.headers.get('sec-ch-ua-mobile');
-    const isMobileUA = chMobile === '?1' || /Android|iPhone|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua);
-
-    // Explicit query params override UA detection if present
-    const hasDownloadParam = url.searchParams.has('download');
-    const hasInlineParam = url.searchParams.has('inline') || url.searchParams.has('view');
-    const isDownload = hasDownloadParam || (isMobileUA && !hasInlineParam);
-
-    // 1. Clean URL for static asset lookup by stripping query parameters
-    // This guarantees asset manifest lookup finds the exact file on disk
+    // Strip all query params before looking up the static asset.
+    // This ensures ?v=... cache-busters never cause a 404 from the asset manifest.
     const cleanUrl = new URL(request.url);
     cleanUrl.search = '';
     const cleanRequest = new Request(cleanUrl.toString(), request);
 
     let response = await env.ASSETS.fetch(cleanRequest);
 
-    // If 404, attempt with decoded pathname in case static asset keying differs
-    if (response.status === 404) {
+    // Fallback: try URL-decoded path if percent-encoded path returned 404
+    if (response.status === 404 && isDoc) {
       try {
-        const decodedPath = decodeURIComponent(cleanUrl.pathname);
-        if (decodedPath !== cleanUrl.pathname) {
+        const decoded = decodeURIComponent(cleanUrl.pathname);
+        if (decoded !== cleanUrl.pathname) {
           const altUrl = new URL(cleanUrl.toString());
-          altUrl.pathname = decodedPath;
-          const altResp = await env.ASSETS.fetch(new Request(altUrl.toString(), request));
-          if (altResp.status === 200) {
-            response = altResp;
-          }
+          altUrl.pathname = decoded;
+          const alt = await env.ASSETS.fetch(new Request(altUrl.toString(), request));
+          if (alt.status === 200) response = alt;
         }
-      } catch (e) {}
+      } catch (_) {}
     }
 
-    // 2. Only modify headers for valid document assets (HTTP 200)
-    // NEVER apply PDF/attachment headers to 404s, error pages, or HTML fallbacks!
+    // Only override headers for document assets that actually exist (200 OK)
     if (isDoc && response.status === 200) {
       const contentType = response.headers.get('content-type') || '';
 
-      // Safety check: If asset fetch returned HTML (e.g. fallback to index.html),
-      // do NOT disguise HTML as a downloadable PDF/document
+      // Safety: never disguise an HTML fallback page as a PDF
       if (isPdf && contentType.includes('text/html')) {
         return response;
       }
 
-      // Extract and sanitize filename
-      const rawFilename = pathname.substring(pathname.lastIndexOf('/') + 1);
-      let filename = 'document.pdf';
-      try {
-        filename = decodeURIComponent(rawFilename);
-      } catch (e) {
-        filename = rawFilename;
-      }
-      const safeFilename = filename.replace(/["\r\n]/g, '').trim() || (isPdf ? 'document.pdf' : 'file');
-      const asciiFilename = safeFilename.replace(/[^\x20-\x7E]/g, '_');
-      const encodedFilename = encodeURIComponent(safeFilename)
-        .replace(/['()]/g, escape)
-        .replace(/\*/g, '%2A');
-
       const headers = new Headers(response.headers);
+
+      // ── Content-Disposition ─────────────────────────────────────────────────
+      // Always serve INLINE for both mobile and desktop.
+      //
+      // Rationale:
+      //   • Mobile Chrome (Android) and Safari (iOS) both have built-in PDF
+      //     viewers and will display PDFs opened in a new tab normally.
+      //   • Returning Content-Disposition: attachment on mobile causes the
+      //     browser download manager to intercept the request, leaving a blank
+      //     tab open. On the SECOND file tap, that stale blank tab or the
+      //     browser's navigation state blocks further taps from working until
+      //     a page refresh.
+      //   • "inline" keeps the PDF in a browser tab that can be closed and
+      //     re-opened repeatedly without any navigation-state side-effects.
+      //   • Users who want to save the file can use the PDF viewer's own
+      //     download button — this is the standard pattern used by every major
+      //     site (GitHub, LinkedIn, Google Drive, etc.).
+      //   • We do NOT use User-Agent detection: UA-based branching combined
+      //     with Cloudflare CDN caching (which serves HIT responses from edge)
+      //     causes cache collisions where a mobile user receives an "inline"
+      //     response cached for a desktop hit, or vice-versa.
       headers.delete('Content-Disposition');
+      headers.set('Content-Disposition', 'inline');
 
-      if (isDownload) {
-        // MOBILE DOWNLOAD: force attachment with RFC 6266 / RFC 5987 filename
-        headers.set(
-          'Content-Disposition',
-          `attachment; filename="${asciiFilename}"; filename*=UTF-8''${encodedFilename}`
-        );
-      } else {
-        // DESKTOP: open/view inline in browser
-        headers.set('Content-Disposition', 'inline');
-      }
-
-      // Ensure correct MIME type
+      // ── MIME type ────────────────────────────────────────────────────────────
       if (isPdf) {
         headers.delete('Content-Type');
         headers.set('Content-Type', 'application/pdf');
@@ -95,17 +78,19 @@ export default {
       }
 
       headers.set('X-Content-Type-Options', 'nosniff');
-      headers.set('Vary', 'User-Agent, Sec-CH-UA-Mobile');
-      headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
 
-      // Preserve the exact response body stream without corruption
+      // Cache-Control: allow CDN/browser to cache, but revalidate on next load.
+      // No Vary header — the response is now the same for every client.
+      headers.set('Cache-Control', 'public, max-age=3600, must-revalidate');
+      headers.delete('Vary'); // remove any stale Vary: User-Agent from previous deploys
+
       return new Response(response.body, {
         status: response.status,
         statusText: response.statusText,
-        headers
+        headers,
       });
     }
 
     return response;
-  }
+  },
 };
